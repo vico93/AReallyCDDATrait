@@ -1,3 +1,5 @@
+local AReallyCDDATraitRegistries = require("AReallyCDDATrait/Registries")
+
 local function StartBurnInside(_tile)
     if (not _tile:isOutside()) then
         _tile:StartFire();
@@ -60,9 +62,9 @@ local function initCDDAFire(_player)
 end
 
 local function initCDDAPlayer(_player)
-    _player:getStats():setDrunkenness(100); -- start drunk
-    _player:getStats():setPanic(100); -- start panicked. Because why not
-    _player:getBodyDamage():setWetness(100); -- start wet
+    _player:getStats():set(CharacterStat.INTOXICATION, 100); -- start drunk
+    _player:getStats():set(CharacterStat.PANIC, 100); -- start panicked. Because why not
+    _player:getBodyDamage():increaseBodyWetness(100); -- start wet
     _player:getBodyDamage():setHasACold(true);-- set up nasty cold
     _player:getBodyDamage():setCatchACold(0.0);
     _player:getBodyDamage():setColdStrength(80.0);
@@ -93,8 +95,8 @@ end
 local function initCDDA()
     local player = getPlayer();
     if player:getHoursSurvived() > 1 then return end --additionnal security check
-    if player:HasTrait("AReallyCDDAFireOnly") then return end -- end function if player has cdda fire only trait
-    if not player:HasTrait("AReallyCDDA") then return end -- end function if player doesn't have cdda trait
+    if player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDAFireOnly) then return end -- end function if player has cdda fire only trait
+    if not player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDA) then return end -- end function if player doesn't have cdda trait
     initCDDAPlayer(player); -- init injuries, moodles, stats and inventory
     initCDDAFire(player); -- init fire around player, inside and outside
     addSound(player, player:getX(), player:getY(), 0, 50, 50);--zombies heard the player break his shower's glass //TODO not sure if this works
@@ -106,8 +108,8 @@ end
 local function initCDDAFireOnly()
     local player = getPlayer();
     if player:getHoursSurvived() > 1 then return end --additionnal security check
-    if player:HasTrait("AReallyCDDA") or player:HasTrait("AReallyCDDAPlayerOnly") then return end -- end function if player has cdda trait
-    if not player:HasTrait("AReallyCDDAFireOnly") then return end -- end function if player doesn't have cdda fire only trait
+    if player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDA) or player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDAPlayerOnly) then return end -- end function if player has cdda trait
+    if not player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDAFireOnly) then return end -- end function if player doesn't have cdda fire only trait
     initCDDAFire(player); -- init fire around player, inside and outside
     addSound(player, player:getX(), player:getY(), 0, 100, 100);--zombies heard the player break his shower's glass //TODO not sure if this works
     Events.OnTick.Remove(initCDDAFireOnly);-- we remove the function from the OnTick event, so that the function is only called once
@@ -118,8 +120,8 @@ end
 local function initCDDAPlayerOnly()
     local player = getPlayer();
     if player:getHoursSurvived() > 1 then return end --additionnal security check
-    if player:HasTrait("AReallyCDDA") or player:HasTrait("AReallyCDDAFireOnly") then return end
-    if not player:HasTrait("AReallyCDDAPlayerOnly") then return end 
+    if player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDA) or player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDAFireOnly) then return end
+    if not player:hasTrait(AReallyCDDATraitRegistries.traits.AReallyCDDAPlayerOnly) then return end 
     initCDDAPlayer(player); -- init fire around player, inside and outside
     addSound(player, player:getX(), player:getY(), 0, 100, 100);--zombies heard the player break his shower's glass //TODO not sure if this works
     Events.OnTick.Remove(initCDDAPlayerOnly);-- we remove the function from the OnTick event, so that the function is only called once

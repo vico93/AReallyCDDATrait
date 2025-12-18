@@ -1,0 +1,34 @@
+module AReallyCDDATrait {
+    character_trait_definition AReallyCDDATrait:AReallyCDDA {
+        CharacterTrait = AReallyCDDATrait:AReallyCDDA,
+        UIName = UI_trait_areallycdda,
+        Cost = -1,
+        UIDescription = UI_trait_areallycddadesc,
+        IsProfessionTrait = false,
+        DisabledInMultiplayer = false,
+        MutuallyExclusiveTraits = AReallyCDDATrait:AReallyCDDAFireOnly;AReallyCDDATrait:AReallyCDDAPlayerOnly,
+        Texture = media/ui/Traits/trait_areallycdda.png,
+    }
+
+    character_trait_definition AReallyCDDATrait:AReallyCDDAFireOnly {
+        CharacterTrait = AReallyCDDATrait:AReallyCDDAFireOnly,
+        UIName = UI_trait_areallycddafireonly,
+        Cost = -1,
+        UIDescription = UI_trait_areallycddafireonlydesc,
+        IsProfessionTrait = false,
+        DisabledInMultiplayer = false,
+        MutuallyExclusiveTraits = AReallyCDDATrait:AReallyCDDA;AReallyCDDATrait:AReallyCDDAPlayerOnly,
+        Texture = media/ui/Traits/trait_areallycddafireonly.png,
+    }
+
+    character_trait_definition AReallyCDDATrait:AReallyCDDAPlayerOnly {
+        CharacterTrait = AReallyCDDATrait:AReallyCDDAPlayerOnly,
+        UIName = UI_trait_areallycddaplayeronly,
+        Cost = -1,
+        UIDescription = UI_trait_areallycddaplayeronlydesc,
+        IsProfessionTrait = false,
+        DisabledInMultiplayer = false,
+        MutuallyExclusiveTraits = AReallyCDDATrait:AReallyCDDA;AReallyCDDATrait:AReallyCDDAFireOnly,
+        Texture = media/ui/Traits/trait_areallycddaplayeronly.png,
+    }
+}
