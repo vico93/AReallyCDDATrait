@@ -1,0 +1,8 @@
+UI_FR = {
+    UI_trait_areallycdda = "Un vrai CD DA",
+    UI_trait_areallycddadesc = "Vous sortez de la douche et faites une mauvaise chute.<br> Vous êtes bourré, trempé, blessé, la maison est en feu,<br> et en plus de tout ça vous avez un gros rhume!<br>Ce n'est vraiment pas votre jour.",
+    UI_trait_areallycddafireonly = "Un vrai CD DA : Feu Seulement"
+    UI_trait_areallycddafireonlydesc = "On dirait que vous avez laissé le four allumé...",
+    UI_trait_areallycddaplayeronly = "Un vrai CD DA : Sans Feu",
+    UI_trait_areallycddaplayeronlydesc = "Vous êtes bourré, trempé, blessé, et vous avez un gros rhume,<br> mais au moins votre maison n'est pas en feu."
+}

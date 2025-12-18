@@ -1,0 +1,9 @@
+UI_EN = {
+    UI_trait_areallycdda = "A Really CD DA",
+    UI_trait_areallycddadesc = "You get out of the shower and fall badly.<br> You're blind drunk, wet, wounded, your house is on fire,<br>and on top of all this you have a nasty cold!<br>Today is definitely not your day.",
+    UI_trait_areallycddafireonly = "A Really CD DA : Fire only",
+    UI_trait_areallycddafireonlydesc = "Looks like you left the oven on...",
+    UI_trait_areallycddaplayeronly = "A Really CD DA : No Fire",
+    UI_trait_areallycddaplayeronlydesc = "You're blind drunk, wet, wounded, and you have a nasty cold,<br> but at least your house is not on fire.<br>Maybe we can win this."
+}
+
