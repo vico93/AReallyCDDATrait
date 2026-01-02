@@ -70,14 +70,33 @@ local function initCDDAPlayer(_player)
     _player:getBodyDamage():setColdStrength(80.0);
     _player:getBodyDamage():setTimeToSneezeOrCough(0);
     local inv = _player:getInventory()
-    inv:clear(); -- clear inventory
+    local itemsToRemove = {}
+    local items = inv:getItems()
+    for i=0, items:size()-1 do
+        local item = items:get(i)
+        local type = item:getFullType()
+        -- Lógica de preservação: Chaves, Mapas e ID Cards
+        if type ~= "Base.Key1" 
+        and not item:IsMap() 
+        and type ~= "Base.IDcard" 
+        and type ~= "Base.IDcard_Female" 
+        and type ~= "Base.IDcard_Male" 
+        and type ~= "Base.IDcard_Stolen" then
+            table.insert(itemsToRemove, item)
+        end
+    end
+
+    -- Remove apenas os itens que não foram preservados
+    for _, item in ipairs(itemsToRemove) do
+        inv:Remove(item)
+    end
     _player:clearWornItems();-- remove all clothes
     _player:setClothingItem_Feet(nil);
     _player:setClothingItem_Legs(nil);
     _player:setClothingItem_Torso(nil);
     _player:setClothingItem_Head(nil);
     _player:setClothingItem_Hands(nil);
-    inv:AddItem("Base.KeyRing"); --we give the player a key ring cause it's not lootable anywhere.
+    -- inv:AddItem("Base.KeyRing"); --we give the player a key ring cause it's not lootable anywhere.
     -- TODO: remove line above and add keyRing to loot tables
     _player:getBodyDamage():getBodyPart(BodyPartType.Groin):generateDeepShardWound();-- start with a deep wound with glass shard in the groin
     local whichPartIsScratched = 9;-- random scratch between leg, foot and torso parts
