@@ -48,7 +48,7 @@ Source: media/lua/client/LastStand/AReallyCDDAy.lua
 Note: The trait works perfectly well if you create your character via the death screen, too, but I advise against it, since if you spam characters in a single world like this, you will spawn many fires in the world and you won't have much left in the end.
 
 Mods to NOT use with this:
-- Mods that give starting gear to the player. You won't get errors, but the CDDA trait should delete everything.
+- Mods that give starting gear to the player. You won't get errors, but the CDDA trait should delete everything. NOTE FROM VICO: Now keys, maps and ID Cards are kept on the starting inventory, so mods like Uncle Dave was a Prepper should work without issue. Any other thing is likely to be remove as the original mod did.
 
 
 If you guys have ideas for balancing or new features, I can take suggestions.
